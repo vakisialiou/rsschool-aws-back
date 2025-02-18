@@ -2,5 +2,8 @@
   "name": "rsschool-aws-back",
   "version": "1.0.0",
   "main": "index.js",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "product-service:deploy": "cd product-service && sls deploy"
+  }
 }
