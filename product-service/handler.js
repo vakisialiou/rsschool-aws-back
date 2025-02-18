@@ -113,13 +113,13 @@ exports.getOrdersList = async () => {
 }
 
 exports.getOrdersById = async ({ pathParameters }) => {
-  if (!('productId' in pathParameters)) {
+  if (!('orderId' in pathParameters)) {
     return { statusCode: 400 }
   }
 
   const { orderId } = pathParameters
 
-  const order = products.find(({ id }) => {
+  const order = orders.find(({ id }) => {
     return id === orderId
   })
 
