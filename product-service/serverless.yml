@@ -1,0 +1,60 @@
+org: vakiseliou
+service: product-service
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+  stage: dev
+  region: us-east-1
+  httpApi:
+    cors:
+      allowedOrigins:
+        - "*"
+      allowedMethods:
+        - GET
+        - POST
+        - PUT
+        - DELETE
+        - OPTIONS
+      allowedHeaders:
+        - Content-Type
+        - Authorization
+      maxAge: 86400
+
+functions:
+  getProductsList:
+    handler: handler.getProductsList
+    events:
+      - httpApi:
+          path: /products
+          method: GET
+  getProductsById:
+    handler: handler.getProductsById
+    events:
+      - httpApi:
+          path: /products/{productId}
+          method: GET
+  getAvailableProductsList:
+    handler: handler.getAvailableProductsList
+    events:
+      - httpApi:
+          path: /available/products
+          method: GET
+  getCartsList:
+    handler: handler.getCartsList
+    events:
+      - httpApi:
+          path: /carts
+          method: GET
+  getOrdersList:
+    handler: handler.getOrdersList
+    events:
+      - httpApi:
+          path: /orders
+          method: GET
+  getOrdersById:
+    handler: handler.getOrdersById
+    events:
+      - httpApi:
+          path: /orders/{orderId}
+          method: GET
